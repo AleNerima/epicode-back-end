@@ -1,0 +1,15 @@
+﻿@model Azienda.Models.Impiegato
+
+<h1>Elimina Impiegato</h1>
+
+<h3>Sei sicuro di voler eliminare questo impiegato?</h3>
+<div>
+    <h4>ID: @Model.IDImpiegato</h4>
+    <h4>Cognome: @Model.Cognome</h4>
+    <h4>Nome: @Model.Nome</h4>
+    <form asp-action="DeleteConfirmed">
+        <input type="hidden" asp-for="IDImpiegato" />
+        <button type="submit" class="btn btn-danger">Elimina</button> |
+        <a asp-action="Index">Annulla</a>
+    </form>
+</div>

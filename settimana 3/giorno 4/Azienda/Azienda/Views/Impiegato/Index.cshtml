@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Azienda.Models.Impiegato>
+
+<h1>Lista Impiegati</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nuovo Impiegato</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cognome</th>
+            <th>Nome</th>
+            <th>Codice Fiscale</th>
+            <th>Età</th>
+            <th>Reddito Mensile</th>
+            <th>Detrazione Fiscale</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var impiegato in Model)
+        {
+            <tr>
+                <td>@impiegato.IDImpiegato</td>
+                <td>@impiegato.Cognome</td>
+                <td>@impiegato.Nome</td>
+                <td>@impiegato.CodiceFiscale</td>
+                <td>@(impiegato.Eta ?? 0)</td>
+                <td>@(impiegato.RedditoMensile ?? 0)</td>
+                <td>@(impiegato.DetrazioneFiscale.HasValue && impiegato.DetrazioneFiscale.Value ? "Sì" : "No")</td>
+
+                <td>
+                    <a asp-action="Details" asp-route-id="@impiegato.IDImpiegato">Dettagli</a> |
+                    <a asp-action="Edit" asp-route-id="@impiegato.IDImpiegato">Modifica</a> |
+                    <a asp-action="Delete" asp-route-id="@impiegato.IDImpiegato">Elimina</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

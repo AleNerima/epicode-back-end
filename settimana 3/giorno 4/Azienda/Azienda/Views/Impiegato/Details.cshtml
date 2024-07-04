@@ -1,0 +1,31 @@
+﻿@model Azienda.Models.Impiegato
+
+<h1>Dettagli Impiegato</h1>
+
+<div>
+    <h4>ID: @Model.IDImpiegato</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Cognome</dt>
+        <dd class="col-sm-10">@Model.Cognome</dd>
+
+        <dt class="col-sm-2">Nome</dt>
+        <dd class="col-sm-10">@Model.Nome</dd>
+
+        <dt class="col-sm-2">Codice Fiscale</dt>
+        <dd class="col-sm-10">@Model.CodiceFiscale</dd>
+
+        <dt class="col-sm-2">Età</dt>
+        <dd class="col-sm-10">@Model.Eta</dd>
+
+        <dt class="col-sm-2">Reddito Mensile</dt>
+        <dd class="col-sm-10">@Model.RedditoMensile</dd>
+
+        <dt class="col-sm-2">Detrazione Fiscale</dt>
+        <dd class="col-sm-10">@Model.DetrazioneFiscale</dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Index">Torna alla lista</a>
+</div>

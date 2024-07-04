@@ -1,0 +1,44 @@
+﻿@model Azienda.Models.Impiegato
+
+<h1>Modifica Impiegato</h1>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="IDImpiegato" />
+    <div class="form-group">
+        <label asp-for="Cognome">Cognome</label>
+        <input asp-for="Cognome" class="form-control" />
+        <span asp-validation-for="Cognome" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Nome">Nome</label>
+        <input asp-for="Nome" class="form-control" />
+        <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CodiceFiscale">Codice Fiscale</label>
+        <input asp-for="CodiceFiscale" class="form-control" />
+        <span asp-validation-for="CodiceFiscale" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Eta">Età</label>
+        <input asp-for="Eta" class="form-control" />
+        <span asp-validation-for="Eta" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RedditoMensile">Reddito Mensile</label>
+        <input asp-for="RedditoMensile" class="form-control" />
+        <span asp-validation-for="RedditoMensile" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <input asp-for="DetrazioneFiscale" class="form-check-input" />
+            <label class="form-check-label" asp-for="DetrazioneFiscale">Detrazione Fiscale</label>
+            <span asp-validation-for="DetrazioneFiscale" class="text-danger"></span>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Salva</button>
+</form>
+
+<div>
+    <a asp-action="Index">Torna alla lista</a>
+</div>
