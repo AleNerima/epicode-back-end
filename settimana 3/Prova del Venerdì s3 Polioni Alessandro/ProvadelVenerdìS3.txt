@@ -8,7 +8,7 @@ CREATE TABLE ANAGRAFICA (
     Indirizzo NVARCHAR(100),
     Città NVARCHAR(50),
     CAP NVARCHAR(10),
-    Cod_Fisc NVARCHAR(16)NOT NULL,
+    Cod_Fisc NVARCHAR(16)NOT NULL
 );
 
 
