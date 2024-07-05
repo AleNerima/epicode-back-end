@@ -33,7 +33,7 @@ CREATE TABLE VERBALE (
     FOREIGN KEY (idanagrafica) REFERENCES ANAGRAFICA(idanagrafica),
     FOREIGN KEY (idviolazione) REFERENCES TIPO_VIOLAZIONE(idviolazione)
 );
-
+----------------------------------------------------------------------------------------------------------------------------------------
 INSERIMENTO DATI
 
 INSERT INTO ANAGRAFICA (Cognome, Nome, Indirizzo, Città, CAP, Cod_Fisc)
@@ -94,42 +94,42 @@ VALUES
 ('2023-12-05', 'Via Padova 18', 'Agente Fabbri', '2023-12-06', 130.00, 2, 18, 8),
 ('2023-12-10', 'Via Perugia 19', 'Agente Rizzo', '2023-12-11', 330.00, 6, 19, 9),
 ('2023-12-15', 'Via Livorno 20', 'Agente Rossi', '2023-12-16', 190.00, 3, 20, 10);
-
+-----------------------------------------------------------------------------------------------------------------------------------------
 QUERY PER INTERROGARE IL DATABASE
-
+-----------------------------------
 1. Conteggio dei verbali trascritti
 
 SELECT COUNT(*) AS ConteggioVerbali
 FROM VERBALE;
-
+--------------------------------------------------
 2. Conteggio dei verbali trascritti raggruppati per anagrafe
 
 SELECT A.Cognome, A.Nome, COUNT(*) AS ConteggioVerbali
 FROM VERBALE V
 JOIN ANAGRAFICA A ON V.idanagrafica = A.idanagrafica
 GROUP BY A.Cognome, A.Nome;
-
+---------------------------------------------------------
 3. Conteggio dei verbali trascritti raggruppati per tipo di violazione
 
 SELECT TV.descrizione, COUNT(*) AS ConteggioVerbali
 FROM VERBALE V
 JOIN TIPO_VIOLAZIONE TV ON V.idviolazione = TV.idviolazione
 GROUP BY TV.descrizione;
-
+----------------------------------------------------------
 4. Totale dei punti decurtati per ogni anagrafe
 
 SELECT A.Cognome, A.Nome, SUM(V.DecurtamentoPunti) AS TotalePuntiDecurtati
 FROM VERBALE V
 JOIN ANAGRAFICA A ON V.idanagrafica = A.idanagrafica
 GROUP BY A.Cognome, A.Nome;
-
+-----------------------------------------------------------------------------------------------------------------------------
 5. Cognome, Nome, Data violazione, Indirizzo violazione, importo e punti decurtati per tutti gli anagrafici residenti a Palermo.
 
 SELECT A.Cognome, A.Nome, V.DataViolazione, V.IndirizzoViolazione, V.Importo, V.DecurtamentoPunti
 FROM VERBALE V
 JOIN ANAGRAFICA A ON V.idanagrafica = A.idanagrafica
 WHERE A.Città = 'Palermo';
-
+--------------------------------------------------------------------------------------------------------------
 6. Cognome, Nome, Indirizzo, Data violazione, importo e punti decurtati per le violazioni fatte tra il febbraio
 2009 e luglio 2009
 
@@ -137,40 +137,40 @@ SELECT A.Cognome, A.Nome, A.Indirizzo, V.DataViolazione, V.Importo, V.Decurtamen
 FROM VERBALE V
 JOIN ANAGRAFICA A ON V.idanagrafica = A.idanagrafica
 WHERE V.DataViolazione BETWEEN '2009-02-01' AND '2009-07-31';
-
+--------------------------------------------
 7. Totale degli importi per ogni anagrafico
 
 SELECT A.Cognome, A.Nome, SUM(V.Importo) AS TotaleImporto
 FROM VERBALE V
 JOIN ANAGRAFICA A ON V.idanagrafica = A.idanagrafica
 GROUP BY A.Cognome, A.Nome;
-
+----------------------------------------------------------------
 8. Visualizzazione di tutti gli anagrafici residenti a Palermo
 
 SELECT *
 FROM ANAGRAFICA
 WHERE Città = 'Palermo';
-
+----------------------------------------------------------------------------------------------
 9. Query che visualizzi Data violazione, Importo e decurtamento punti relativi ad una certa data
 
 DECLARE @DataViolazione DATE = '2023-06-01';
 SELECT V.DataViolazione, V.Importo, V.DecurtamentoPunti
 FROM VERBALE V
 WHERE V.DataViolazione = @DataViolazione;
-
+--------------------------------------------------------------------------------------------
 10. Conteggio delle violazioni contestate raggruppate per Nominativo dell’agente di Polizia
 
 SELECT V.Nominativo_Agente, COUNT(*) AS ConteggioViolazioni
 FROM VERBALE V
 GROUP BY V.Nominativo_Agente;
-
+------------------------------------------------------------------------------------------------------------------------------------
 11. Cognome, Nome, Indirizzo, Data violazione, Importo e punti decurtati per tutte le violazioni che superino il decurtamento di 5 punti
 
 SELECT A.Cognome, A.Nome, A.Indirizzo, V.DataViolazione, V.Importo, V.DecurtamentoPunti
 FROM VERBALE V
 JOIN ANAGRAFICA A ON V.idanagrafica = A.idanagrafica
 WHERE V.DecurtamentoPunti > 5;
-
+-----------------------------------------------------------------------------------------------------------------------------
 12. Cognome, Nome, Indirizzo, Data violazione, Importo e punti decurtati per tutte le violazioni che superino l’importo di 400 euro
 
 SELECT A.Cognome, A.Nome, A.Indirizzo, V.DataViolazione, V.Importo, V.DecurtamentoPunti
